@@ -1,0 +1,36 @@
+// prisma/schema.prisma
+
+// Configura o cliente Prisma para JavaScript
+generator client {
+    provider = "prisma-client-js"
+}
+
+// Configuração da conexão com PostgreSQL
+datasource db {
+    provider = "postgresql"
+}
+
+// Tabela de músicas individuais
+model Song {
+    id        Int         @id @default(autoincrement())
+    title     String
+    artist    String
+    album     String?
+    likes     Int         @default(0)
+    lists     ListSongs[]
+    createdAt DateTime    @default(now())
+    updatedAt DateTime    @updatedAt
+
+    @@map("song")
+}
+
+// Tabela de playlists
+model ListSongs {
+    id        Int      @id @default(autoincrement())
+    name      String
+    songs     Song[]
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@map("list_songs")
+}
