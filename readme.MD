@@ -2,16 +2,13 @@
 - npm init -y
 
 # 2. Instalar dependência
-- npm i express
+- npm i express dotenv pg @prisma/client @prisma/adapter-pg
+- npm i -D nodemon prisma
 
 # 3. Ajustar package.json
 - Adicionar: "type": "module"
 - Adicionar: "main": "server.js"
 - Adicionar dentro do script: "dev": "nodemon server.js"
-
-# 4. Instalar dependências
-- npm i dotenv pg @prisma/client @prisma/adapter-pg
-- npm i -D nodemon prisma
 
 # 5. Inicializar Prisma
 - npx prisma init --datasource-provider postgresql
